@@ -5,21 +5,16 @@ pool:
   name: Default
 
 steps:
-  - task: JavaToolInstaller@0
-    inputs:
-      versionSpec: '17'
-      jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'PreInstalled'
-
   - task: Maven@4
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.17'
+      javaHomeOption: 'Path'
+      jdkDirectory: '/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home'
 
   - task: PublishCodeCoverageResults@2
     inputs:
       summaryFileLocation: '**/site/jacoco/jacoco.xml'
+
