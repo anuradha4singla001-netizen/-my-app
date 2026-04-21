@@ -20,8 +20,6 @@ steps:
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
 
-  - task: PublishCodeCoverageResults@1
+  - task: PublishCodeCoverageResults@2
     inputs:
-      codeCoverageTool: 'JaCoCo'
       summaryFileLocation: '**/site/jacoco/jacoco.xml'
-      reportDirectory: '**/site/jacoco'
